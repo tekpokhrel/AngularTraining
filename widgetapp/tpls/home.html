@@ -1,0 +1,24 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>color</th>
+			<th>size</th>
+			<th>quantity</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="widget in widgets">
+			<td ng-bind="widget.name"></td> 
+			<td ng-bind="widget.color"></td>
+			<td ng-bind="widget.size"></td>
+			<td ng-bind="widget.quantity"></td>
+			<td>
+				<button ui-sref="view">Edit</button>
+				<button ui-sref="view({widgetId: widget.id})">View</button>
+				<button ng-click="deleteWidget(widget.id)">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
