@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+		<head>
+			<title> Welcome to AngularJs Training</title>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		
+	</head>
+<body>
+
+<script>
+			var x=0,y=0,funcs=[];
+			for(;x<5;x++) {
+
+				(function(){
+					var t=x;
+
+				funcs.push(function() {
+				
+					console.log(t);
+				});
+				})();
+			}
+			for(;y<5;y++) {
+				funcs[y]();
+			}
+		</script>
+
+</body>
+</html>

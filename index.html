@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Welcome to AngularJs Training</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<style>
+			label{display: block;}
+		</style>
+	</head>
+<body>
+
+<xdiv ng-app="myApp" ng-controller="myCtrl">
+	<label>Car Make Filter<input ng-model="CarMakeFilter"></label><br>
+	<label>Car Model Filter<input ng-model="CarModelFilter"></label><br>
+	<label>Car Year Filter<input ng-model="CarYearFilter"></label><br>
+
+
+<table>
+	<tr>
+		<th>Make</th>
+		<th>Model</th>
+		<th>Year</th>
+		<th>Price</th>
+		<th>Color</th>
+	</tr>
+<tr ng-repeat= "car in cars | filter:{make:CarMakeFilter,model:CarModelFilter,year:CarYearFilter} | orderBy:'make':true">
+	<td>{{car.make}}</td>
+	<td>{{car.model}}</td>
+	<td>{{car.year}}</td>
+	<td>{{car.price}}</td>
+	<td>{{car.color}}</td>
+</tr>
+</table>
+<form>
+<h2>New Car</h2>
+<label>Car Make <input ng-model="carMake"></label><br>
+<label>Car Model <input ng-model="carModel"></label><br>
+<label>Car Year <input ng-model="carYear"></label><br>
+<button ng-click="addCar()">Add Car</button>
+</form>
+
+<script>
+angular.module('myApp', [])
+.controller('myCtrl', function($scope) {
+    $scope.cars = [
+                    {make:'Toyota', model:'Camry', year:'2015',price:'50000',color:'Red'},
+                    {make:'Honda', model:'Accord', year:'2010',price:'60000',color:'Blue'},
+                    {make:'Mercedes', model:'Benz', year:'2013',price:'70000',color:'Black'},
+                    {make:'Kia', model:'Sedona', year:'2014',price:'40000',color:'White'}
+
+    ];
+    $scope.addCar= function(){
+    	$scope.cars.push({
+
+    		make:$scope.carMake,
+    		model:$scope.carModel,
+    		year:$scope.carYear
+
+    	});
+
+    };
+    
+});
+</script>
+
+</body>
+</html>

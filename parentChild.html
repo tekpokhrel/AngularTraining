@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Welcome to AngularJs Training</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		
+	</head>
+<body>
+
+<div ng-app="myApp" >
+	<div ng-controller="ParentCtrl">
+	Parent Message: {{data.message}}<br>
+	Parent Message:<input ng-model="data.message">
+		<div ng-controller="ChildCtrl">
+		Child Message: {{data.message}}<br>
+		Child Message:<input ng-model="data.message">
+		</div>
+	</div>
+</div>
+
+
+<script>
+angular.module("myApp", [])
+.controller("ParentCtrl", function($scope) {
+    
+
+    $scope.data={};
+
+})
+.controller("ChildCtrl", function($scope){
+
+});
+</script>
+
+</body>
+</html>

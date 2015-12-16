@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Welcome to AngularJs Training</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<style>
+			label{display: block;}
+		</style>
+	</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<input ng-model="colorFilter">
+	
+
+<ul ng-repeat="color in colors | orderBy:color | filter:colorFilter">
+<li>{{$index}} {{color}} </li>
+</ul>
+
+<form>
+<h2>New Color</h2>
+<label>Country color: <input ng-model="newColor"></label>
+
+<button ng-click="addColor()">Add Color</button>
+<a href="#" ng-click="remove(item)">Remove an item</a> 
+</form>
+
+<script>
+angular.module('myApp', [])
+.controller('myCtrl', function($scope) {
+    $scope.colors = ["red", "blue","white","black","green","light blue","yellow"];
+      $scope.addColor= function(){
+    	$scope.colors.push($scope.newColor);
+
+    };
+     $scope.remove = function (item) {
+        $scope.retrieveddata.splice(item, 1);
+    };
+    
+});
+</script>
+
+</body>
+</html>
